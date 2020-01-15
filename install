@@ -19,7 +19,7 @@ echo
 if [[ $REPLY =~ [Yy]$ ]]; then
     echo 'alias c=/home/$USER/.local/bin/calculon' >> $rc
     echo "Alias added!, enjoy!"
-    echo "You might need to resouce $rc"
+    echo "You might need to type: source $rc"
     echo "Or restart your terminal!"
 else
     echo "No alias added, but you can still use"
