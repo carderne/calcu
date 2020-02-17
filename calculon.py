@@ -2,8 +2,8 @@
 
 """Perform simple command-line based calculations."""
 
+from __future__ import division
 import sys
-
 from math import *
 
 
@@ -24,7 +24,7 @@ def main(query=None):
         res = eval(query)
         print("\t\t= {:.{}f}".format(res, estimate_decimals(res)))
     except SyntaxError:
-        print("\t\tError")
+        print("\t\tError", query)
 
 
 if __name__ == "__main__":
