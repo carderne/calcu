@@ -1,6 +1,8 @@
 #!/bin/bash
 
-path=/home/$USER/.local/bin/calculon
+dir=/home/$USER/.local/bin
+mkdir -p $dir
+path=$dir/calculon
 
 cp calculon.py $path
 chmod +x $path
