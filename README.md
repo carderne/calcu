@@ -3,6 +3,8 @@ A simple calculator for your CLI.
 
 (It uses Python's `eval()` and spits out the result, with some prettifying.)
 
+![example-gif](usage.gif)
+
 ## Installation
 ```bash
 pip install calcu
