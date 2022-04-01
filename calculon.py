@@ -6,6 +6,8 @@ import sys
 from math import *  # noqa
 from pathlib import Path
 
+__version__ = "0.9.0"
+
 last_path = Path("~/.config/calculon.last").expanduser()
 precision = 1e-10
 
@@ -19,12 +21,21 @@ def estimate_decimals(res):
     return 9
 
 
-def main(query=None):
+def load_last():
     try:
         with last_path.open() as f:
-            last = str(float(f.read().strip()))
+            return str(float(f.read().strip()))
     except FileNotFoundError:
-        last = ""
+        return ""
+
+
+def dump_last(res):
+    with last_path.open("w") as f:
+        print(res, file=f)
+
+
+def main(query=""):
+    last = load_last()
     query = (
         query.replace("[", "(")
         .replace("]", ")")
@@ -34,12 +45,18 @@ def main(query=None):
     )
     try:
         res = eval(query)
-        with last_path.open("w") as f:
-            print(res, file=f)
+        dump_last(res)
         print(f"\t\t= {res:.{estimate_decimals(res)}f}")
     except SyntaxError:
         print("\t\tError", query)
 
 
+def cli():
+    if sys.argv[1] == "--version":
+        print(__version__)
+    else:
+        main("".join(sys.argv[1:]))
+
+
 if __name__ == "__main__":
-    main("".join(sys.argv[1:]))
+    cli()
