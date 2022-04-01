@@ -5,6 +5,9 @@
 from __future__ import division
 import sys
 from math import *
+from pathlib import Path
+
+last_path = Path("~/.config/calculon.last").expanduser()
 
 
 def estimate_decimals(res):
@@ -17,11 +20,22 @@ def estimate_decimals(res):
 
 
 def main(query=None):
+    try:
+        with last_path.open() as f:
+            last = str(float(f.read().strip()))
+    except FileNotFoundError:
+        last = ""
     query = (
-        query.replace("[", "(").replace("]", ")").replace("^", "**").replace("x", "*")
+        query.replace("[", "(")
+        .replace("]", ")")
+        .replace("^", "**")
+        .replace("x", "*")
+        .replace("_", last)
     )
     try:
         res = eval(query)
+        with last_path.open("w") as f:
+            print(res, file=f)
         print("\t\t= {:.{}f}".format(res, estimate_decimals(res)))
     except SyntaxError:
         print("\t\tError", query)
