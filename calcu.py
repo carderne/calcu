@@ -8,7 +8,7 @@ from pathlib import Path
 
 __version__ = "0.9.0"
 
-last_path = Path("~/.config/calculon.last").expanduser()
+last_path = Path("~/.config/calcu.last").expanduser()
 precision = 1e-10
 
 

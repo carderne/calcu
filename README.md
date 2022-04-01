@@ -1,14 +1,14 @@
-# calculon
+# calcu
 Simple, probably dangerous Python CLI calculator.  
 (It uses `eval()` and spits out the result, with some prettifying.)
 
 ## Installation
 Simply do the following to get going:
 
-    git clone https://github.com/carderne/calculon.git
-    ./calculon/install
+    git clone https://github.com/carderne/calcu.git
+    ./calcu/install
 
-This will install calculon to `~/.local/bin/calculon` and prompt you to add an alias for `c` to your `.bashrc` (or equivalent).
+This will install calcu to `~/.local/bin/calcu` and prompt you to add an alias for `c` to your `.bashrc` (or equivalent).
 
 ## Usage
 Pass any valid Python expression (including all symbols from the `math` library) to the CLI to get a result back. Spaces are allowed. You can replace regular brackets with square brackets so that bash doesn't complain. You can use `^` instead of `**` for exponents. You can use `x` instead of `*` for multiplication. Or just wrap everything in quotes `"` `"`.
