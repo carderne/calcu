@@ -6,7 +6,7 @@ import sys
 from math import *  # noqa
 from pathlib import Path
 
-__version__ = "0.9.7"
+__version__ = "0.9.8"
 
 last_path = Path("~/.config/calcu.last").expanduser()
 precision = 1e-10
