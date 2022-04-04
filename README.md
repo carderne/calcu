@@ -1,4 +1,6 @@
 # calcu
+[![publish](https://github.com/carderne/calcu/actions/workflows/publish.yml/badge.svg)](https://github.com/carderne/calcu/actions/workflows/publish.yml)
+
 A simple calculator for your CLI.
 
 (It uses Python's `eval()` and spits out the result, with some prettifying.)
