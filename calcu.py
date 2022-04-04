@@ -6,7 +6,7 @@ import sys
 from math import *  # noqa
 from pathlib import Path
 
-__version__ = "0.9.6"
+__version__ = "0.9.7"
 
 last_path = Path("~/.config/calcu.last").expanduser()
 precision = 1e-10
@@ -46,7 +46,7 @@ def main(query=""):
     try:
         res = eval(query)
         dump_last(res)
-        print(f"\t\t= {res:.{estimate_decimals(res)}f}")
+        print(f"\t\t= {res:,.{estimate_decimals(res)}f}")
     except (SyntaxError, NameError) as e:
         print("\t\tError", e)
 
