@@ -2,7 +2,7 @@ name: publish
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
     paths:
       - 'calcu.py'
 
@@ -29,3 +29,4 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           password: ${{ secrets.PYPI_API_TOKEN }}
+          skip_existing: true
