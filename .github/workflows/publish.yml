@@ -28,5 +28,4 @@ jobs:
         # mimics: twine upload dist/* --skip-existing
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          user: ${{ secrets.TWINE_USERNAME }}
-          password: ${{ secrets.TWINE_PASSWORD }}
+          password: ${{ secrets.PYPI_API_TOKEN }}
