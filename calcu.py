@@ -3,11 +3,10 @@
 """Perform simple command-line based calculations."""
 
 import sys
+from importlib.metadata import version
 from math import *  # noqa
 from pathlib import Path
 from typing import Any
-
-__version__ = "0.9.9"
 
 last_path = Path("~/.config/calcu.last").expanduser()
 PRECISION = 1e-10
@@ -26,16 +25,14 @@ def estimate_decimals(res: float) -> int:
 def load_last() -> str:
     """Load saved value from previous run."""
     try:
-        with last_path.open("r") as file:
-            return str(float(file.read().strip()))
+        return str(float(last_path.read_text().strip()))
     except FileNotFoundError:
         return ""
 
 
 def dump_last(res: Any) -> None:
     """Save value to file."""
-    with last_path.open("w") as file:
-        print(res, file=file)
+    last_path.write_text(str(res))
 
 
 def main(query: str = "") -> None:
@@ -60,7 +57,7 @@ def cli() -> None:
     """CLI entrypoint."""
     if len(sys.argv) > 1:
         if sys.argv[1] == "--version":
-            print(__version__)
+            print(version("calcu"))
         else:
             main("".join(sys.argv[1:]))
 

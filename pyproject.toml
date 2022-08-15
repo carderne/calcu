@@ -1,5 +1,9 @@
 [build-system]
-requires = ["setuptools>=65", "wheel>=0.37.1"]
+requires = [
+    "setuptools>=65",
+    "wheel>=0.37.1",
+    "setuptools-scm[toml]>=7.0.5",
+]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -7,22 +11,22 @@ name = "calcu"
 description = "Very simple Python calculator for your terminal"
 readme = "README.md"
 license = {file = "LICENSE"}
-requires-python = ">=3.6"
+requires-python = ">=3.8"
 
 authors = [
-    {name = "Chris Arderne", email="chris@rdrn.me"}
+    {name = "Chris Arderne", email="chris@rdrn.me"},
 ]
 
 keywords = ["calculator", "cli"]
+
+dynamic = ["version"]
 
 classifiers = [
   "Environment :: Console",
   "License :: OSI Approved :: MIT License",
   "Operating System :: Unix",
-  "Programming Language :: Python"
+  "Programming Language :: Python",
 ]
-
-dynamic = ["version"]
 
 [tool.setuptools]
 zip-safe = true
@@ -32,8 +36,7 @@ py-modules = ["calcu"]
 [project.scripts]
 c = "calcu:cli"
 
-[tool.setuptools.dynamic]
-version = {attr = "calcu.__version__"}
+[tool.setuptools_scm]
 
 [project.optional-dependencies]
 dev = [
@@ -45,8 +48,9 @@ dev = [
     "pre-commit",
     "pytest",
     "pytest-cov",
+    "setuptools-scm",
     "tox",
-    "twine"
+    "twine",
 ]
 
 [project.urls]
