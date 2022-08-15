@@ -1,2 +1,69 @@
 [build-system]
-requires = ["setuptools>=42", "wheel"]
+requires = ["setuptools>=65", "wheel>=0.37.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "calcu"
+description = "Very simple Python calculator for your terminal"
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.6"
+
+authors = [
+    {name = "Chris Arderne", email="chris@rdrn.me"}
+]
+
+keywords = ["calculator", "cli"]
+
+classifiers = [
+  "Environment :: Console",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: Unix",
+  "Programming Language :: Python"
+]
+
+dynamic = ["version"]
+
+[tool.setuptools]
+zip-safe = true
+include-package-data = false
+py-modules = ["calcu"]
+
+[project.scripts]
+c = "calcu:cli"
+
+[tool.setuptools.dynamic]
+version = {attr = "calcu.__version__"}
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "build",
+    "flake8",
+    "isort",
+    "mypy",
+    "pre-commit",
+    "pytest",
+    "pytest-cov",
+    "tox",
+    "twine"
+]
+
+[project.urls]
+homepage = "https://github.com/carderne/calcu"
+
+[tool.black]
+line-length = 88
+include = '\.pyi?$'
+exclude = ".git,.hg,.mypy_cache,.tox,.venv,_build,buck-out,build,dist"
+
+[tool.mypy]
+ignore_missing_imports = true
+pretty = true
+show_error_codes = true
+show_error_context = true
+show_traceback = true
+
+[tool.isort]
+profile = "black"
+skip = ".tox,.eggs,ci/templates,build,dist"
